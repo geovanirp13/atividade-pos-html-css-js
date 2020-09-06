@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS</title>
+
+  <style>
+    #identificador {
+      height: 50px;
+      width: 50px;
+      background-color: #61cc19;
+    }
+
+    div#identificador {
+      height: 50px;
+      width: 50px;
+      background-color: #61cc19;
+      color: white;
+    }
+
+    .azul {
+      height: 50px;
+      width: 50px;
+      background-color: blue;
+      color: white;
+    }
+
+    div {
+      height: 50px;
+      width: 50px;
+      background-color: black;
+      color: white;
+    }
+
+    div[data="teste"] {
+      height: 50px;
+      width: 50px;
+      background-color: chocolate;
+      color: white;
+      padding: 10px;
+      margin: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="identificador">
+    Teste
+  </div>
+
+  <div class="azul">
+    Teste 2
+  </div>
+
+  <div>
+    Teste 3
+  </div>
+
+  <div data="teste">
+    Teste 4
+  </div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de PETS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+ 
+<body>
+ 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">PETS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+ 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+ 
+    <div class="container">
+        <h1 class="mt-2">Listagem de PETS</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>Nome</td>
+              <td>Idade</td>
+              <td>Informações</td>
+              <td>Cidade</td>
+              <td>Estado</td>
+              <td>Ações</td>
+            </tr>
+          </thead>
+
+          <tbody id="tbodyPet">
+          </tbody>
+        </table>
+    </div>
+ 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous">
+    </script>
+    
+    <script>
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", "http://127.0.0.1:8000/api/pets", true);
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Accept", "application/json");
+
+      xhr.onload = function() {
+        // variavel xhr.status
+        if (xhr.status === 200) {
+          let data = JSON.parse(xhr.responseText);
+          data.items.forEach(function(item) {
+            addRow(item);
+          })
+        }
+      }
+
+      xhr.onerror = function() {
+        alert("Not Found");
+      };
+
+      xhr.send();
+
+      const addRow = (item) => {
+        let tbody = document.getElementById("tbodyPet");
+        let row = tbody.insertRow(-1);
+
+        let columnId           = row.insertCell(0);
+        let columnName         = row.insertCell(1);
+        let columnAge          = row.insertCell(2);
+        let columnInformations = row.insertCell(3);
+        let columnCity         = row.insertCell(4);
+        let columnState        = row.insertCell(5);
+        let columnActions      = row.insertCell(6);
+
+        let txtId           = document.createTextNode(item.id);
+        let txtName         = document.createTextNode(item.name);
+        let txtAge          = document.createTextNode(item.age);
+        let txtInformations = document.createTextNode(item.informations);
+        let txtCity         = document.createTextNode(item.city);
+        let txtState        = document.createTextNode(item.state);
+        let txtActions      = document.createTextNode("Actions");
+        let txtBtnEditar    = document.createTextNode("Editar");
+
+        let btnEditar = document.createElement("a");
+            btnEditar.classList.add("btn");
+            btnEditar.classList.add("btn-primary");
+            btnEditar.appendChild(txtBtnEditar);
+
+        columnId.appendChild(txtId);
+        columnName.appendChild(txtName);
+        columnAge.appendChild(txtAge);
+        columnInformations.appendChild(txtInformations);
+        columnCity.appendChild(txtCity);
+        columnState.appendChild(txtState);
+        columnActions.appendChild(btnEditar);
+      }
+
+    </script>
+</body>
+ 
+</html>

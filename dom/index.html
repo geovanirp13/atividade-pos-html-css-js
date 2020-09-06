@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+ 
+    <style>
+        .teste {
+            color: blue;
+        }
+ 
+        .classe-nova {
+            font-size: 30px;
+        }
+    </style>
+</head>
+ 
+<body>
+ 
+    <h1>DOM</h1>
+ 
+    <p id="paragrafo1">Paragráfo 1</p>
+    <p name="paragrafo2">P 2</p>
+    <p class="paragrafo3">P 3</p>
+    <p>P 4</p>
+ 
+    <script type="text/javascript">
+        /** POR ID **/
+        // var paragrafo1 = window.document
+        //     .getElementById("paragrafo1");
+ 
+        // paragrafo1.innerText = "Primeiro Paragrafo 1";
+        // paragrafo1.innerHTML = "Primeiro <strong>Paragrafo</strong> 1";
+ 
+ 
+        // /** POR NAME **/
+        // var paragrafo2 = document
+        //     .getElementsByName("paragrafo2");
+ 
+        // paragrafo2[0].innerHTML = "Paragrafo com name";
+ 
+ 
+ 
+        // /** POR CLASSE **/
+        // let paragrafo3 = document
+        //     .getElementsByClassName("paragrafo3")[0];
+ 
+        //     // paragrafo3.classList.add("teste");
+        //     paragrafo3.innerHTML = "Paragrafo com classe";
+ 
+        // /** POR TAGNAME **/
+        // let paragrafo4 = document
+        //     .getElementsByTagName("p")[3];
+ 
+        // paragrafo4.innerHTML = "<strong>Paragrafo</strong> com tag name";
+        // paragrafo4.classList.add('teste');
+        // paragrafo4.classList.add('classe-nova');
+ 
+ 
+        /** Query selector **/
+        var paragrafo1 = document
+            .querySelector("#paragrafo1"); // POR ID
+ 
+        var paragrafo2 = document
+            .querySelector("p[name=paragrafo2]"); // POR NAME
+ 
+        var paragrafo3 = document
+            .querySelector(".paragrafo3"); // POR CLASSE
+ 
+        paragrafo1.innerHTML = "Paragrafo 1 Alterado";
+        paragrafo2.innerHTML = "Paragrafo 2 alterado";
+        paragrafo3.innerHTML = "Paragrafo 3 alterado";
+ 
+        console.log(paragrafo3);
+    </script>
+ 
+</body>
+ 
+</html>

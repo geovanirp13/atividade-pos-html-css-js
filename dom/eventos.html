@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos</title>
+</head>
+<body>
+  <h1>Eventos</h1>
+
+  <button type="button" onclick="mostrarMensagem()">Clique aqui</button>
+  <span id="mensagem"></span>
+
+  <br/><br/>
+
+  <button type="button" onclick="mostrarMensagem()">Clique aqui</button>
+
+  <script>
+    const mostrarMensagem = () => {
+      var span = document.getElementById('mensagem');
+
+      span.innerHTML = 'Clicou no botão';
+    }
+
+    var botao = document.getElementsByTagName('button')[1];
+
+    botao.addEventListener('click', mostrarMensagem);
+    botao.addEventListener('click', function(){
+      alert('Mostrar mensagem');
+    });
+
+  </script>
+  
+</body>
+</html>

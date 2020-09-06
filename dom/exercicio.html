@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício</title>
+</head>
+ 
+<body>
+    <h1>Exercício</h1>
+ 
+    <label>Numero 1</label>
+    <input name="numero1" type="text" value="">
+ 
+    <br/>
+    <br/>
+ 
+    <label>Numero 2</label>
+    <input name="numero2" type="text" value="">
+
+    <br/>
+    <br/>
+    
+    <button type="button">Somar</button>
+    <button type="button">Subtrair</button> <br />
+ 
+    <span id="valor"></span>
+ 
+    <script>
+        var numero1 = document.getElementsByName("numero1")[0];
+ 
+        var numero2 = document.getElementsByName("numero2")[0];
+ 
+        var botaoSoma = document.getElementsByTagName("button")[0];
+ 
+        var botaoSubtracao = document.getElementsByTagName("button")[1];
+ 
+        botaoSoma.addEventListener("click", () => soma(numero1.value, numero2.value));
+
+        botaoSubtracao.addEventListener("click", () => subtrair(numero1.value, numero2.value));
+
+        const soma = (numero1, numero2) => {
+            let total = new Number(numero1) + new Number(numero2);
+            let span = document.getElementById("valor");
+            span.innerText = "Valor total => " + total;
+        };
+
+        const subtrair = (numero1, numero2) => {
+            let total = new Number(numero1) - new Number(numero2);
+            let span = document.getElementById("valor");
+            span.innerText = "Valor total => " + total;
+        };
+ 
+    </script>
+ 
+</body>
+ 
+</html>
